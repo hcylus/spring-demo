@@ -9,7 +9,7 @@
 <h1>System information</h1>
 
 <table>
-    <tr th:each="info : ${info.entrySet()}">
+    <tr th:each="info : ${show.entrySet()}">
         <td th:text="|${info.getKey()}: ${info.getValue()}|"></td>
     </tr>
 </table>
