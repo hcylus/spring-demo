@@ -46,7 +46,6 @@ public class SystemUtil {
      */
     public static HashMap<String, String> getLocalIPs() throws SocketException {
         HashMap<String, String> map = new HashMap<>();
-        //List<String> list = new ArrayList<>();
         Enumeration<NetworkInterface> enumeration = NetworkInterface.getNetworkInterfaces();
         while (enumeration.hasMoreElements()) {
             NetworkInterface intf = enumeration.nextElement();
@@ -59,12 +58,11 @@ public class SystemUtil {
                 if (addr.isLoopbackAddress() || !addr.isSiteLocalAddress() || addr.isAnyLocalAddress()) {
                     continue;
                 }
-                //list.add(addr.getHostAddress());
                 map.put(intf.getDisplayName(),addr.getHostAddress());
             }
         }
-        return map; //System.out.println(map);
-        //return list.toArray(new String[0]);
+        return map;
+
     }
 
     /**
@@ -76,22 +74,26 @@ public class SystemUtil {
         return System.getProperty("os.name");
     }
 
-    public static void SystemInfo() {
+    public static HashMap<String, String> SystemInfo() {
+        HashMap<String, String> map = new HashMap<>();
         try {
-
-            System.out.println("系统时间：" + SystemUtil.osTime());// new Date()为获取当前系统时间
-            System.out.println("操作系统：" + SystemUtil.osName());
-            System.out.println("主机名称：" + SystemUtil.getHostName());
+            map.put("OSTime",SystemUtil.osTime());
+            map.put("OSName",SystemUtil.osName());
+            map.put("HostName",SystemUtil.getHostName());
+            HashMap<String, String> ips = SystemUtil.getLocalIPs();
+            map.putAll(ips);
             //System.out.println("系统首选IP：" + LocalHostUtil.getLocalIP());
-            for (Entry<String, String> entry : SystemUtil.getLocalIPs().entrySet()) {
+            for (Entry<String, String> entry : map.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue();
-                System.out.println(key + "网口IP: " + value);
+                System.out.println(key + ": " + value);
             }
+
         } catch (UnknownHostException e) {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return map;
     }
-   
+
 }

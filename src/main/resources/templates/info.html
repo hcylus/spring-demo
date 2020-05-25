@@ -6,20 +6,13 @@
 </head>
 <body>
 
-<h1>Product list</h1>
+<h1>System information</h1>
 
 <table>
-    <tr th:each="ip : ${ip.entrySet()}">
-        <th th:text="${ip.getKey()}"></th>
-    </tr>
-    <tr th:each="ip : ${ip.entrySet()}">
-        <td th:text="${ip.getValue()}"></td>
+    <tr th:each="info : ${info.entrySet()}">
+        <td th:text="|${info.getKey()}: ${info.getValue()}|"></td>
     </tr>
 </table>
-
-<p th:text="|系统时间: ${osTime}|" />
-<p th:text="'操作系统: ' + ${osName}" />
-<p th:text="'主机名称: ' + ${HostName}" />
 
 </body>
 </html>
