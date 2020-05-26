@@ -27,7 +27,7 @@ public class InfoController {
         HashMap<String, String> map = new HashMap<>();
         map.put("AppName",applicationName);
         map.put("PkgName",pkg);
-        map.put("ClientIp", SystemUtil.ClientIp(request));
+        map.put("ClientIP", SystemUtil.ClientIp(request));
         HashMap<String, String> info = SystemUtil.SystemInfo();
         info.putAll(map);
         model.addAttribute("show", info);
