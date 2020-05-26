@@ -19,20 +19,19 @@
     </properties>
 
 <!-- 设置maven.aliyun.com仓库 -->
-
-         <repositories>
-                  <repository>
-                           <id>nexus-aliyun</id>
-                           <name>nexus-aliyun</name>
-                           <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-                           <releases>
-                                    <enabled>true</enabled>
-                           </releases>
-                           <snapshots>
-                                    <enabled>false</enabled>
-                           </snapshots>
-                  </repository>
-         </repositories>         
+    <repositories>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>nexus-aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
          
     <dependencies>
         <dependency>
@@ -69,7 +68,8 @@
     </dependencies>
 
     <build>
-        <finalName>spring-demo</finalName>     
+        <!-- jar包名：业务-模块-版本号 -->
+        <finalName>spring-${project.artifactId}-${project.version}</finalName >
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

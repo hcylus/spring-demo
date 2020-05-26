@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.*;
 
 @Controller
@@ -21,9 +22,12 @@ public class InfoController {
 
     @RequestMapping("/show")
     public String showInfo(Model model) {
+        String pkg = System.getProperty("java.class.path");
+        pkg = pkg.substring(pkg.lastIndexOf(File.separator) + 1);
         HashMap<String, String> map = new HashMap<>();
         map.put("AppName",applicationName);
-        map.put("RemoteIP", SystemUtil.ClientIp(request));
+        map.put("PkgName",pkg);
+        map.put("ClientIp", SystemUtil.ClientIp(request));
         HashMap<String, String> info = SystemUtil.SystemInfo();
         info.putAll(map);
         model.addAttribute("show", info);
