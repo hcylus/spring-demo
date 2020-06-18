@@ -10,8 +10,13 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public class SystemUtil {
+
+    private static final Logger logger = LogManager.getLogger(DemoApplication.class.getName());
 
     // 获取系统时间
     public static String osTime() {
@@ -75,7 +80,7 @@ public class SystemUtil {
         return System.getProperty("os.name");
     }
 
-    public static String ClientIp(HttpServletRequest request) {
+    public static String clientIp(HttpServletRequest request) {
         String ipAddress = null;
         try {
             ipAddress = request.getHeader("x-forwarded-for");
@@ -113,7 +118,7 @@ public class SystemUtil {
         return ipAddress;
     }
 
-    public static HashMap<String, String> SystemInfo() {
+    public static HashMap<String, String> systemInfo() {
         HashMap<String, String> map = new HashMap<>();
         try {
             map.put("OSTime",SystemUtil.osTime());
@@ -125,7 +130,8 @@ public class SystemUtil {
             for (Entry<String, String> entry : map.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue();
-                System.out.println(key + ": " + value);
+                //System.out.println(key + ": " + value);
+                logger.info(key + ": " + value);
             }
 
         } catch (UnknownHostException e) {
