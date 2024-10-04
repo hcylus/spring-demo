@@ -90,7 +90,8 @@
 
     <build>
         <!-- jar包名：业务-模块-版本号 -->
-        <finalName>spring-${project.artifactId}-${project.version}</finalName >
+<!--         <finalName>spring-${project.artifactId}-${project.version}</finalName > -->
+        <finalName>spring-${project.artifactId}</finalName >     
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
