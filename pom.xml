@@ -19,11 +19,11 @@
     </properties>
 
 <!-- 设置maven.aliyun.com仓库 -->
-    <repositories>
+    <!-- <repositories>
         <repository>
-            <id>nexus-aliyun</id>
-            <name>nexus-aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <id>huaweicloud-maven</id>
+            <name>huaweicloud maven</name>
+            <url>https://mirrors.huaweicloud.com/repository/maven/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -31,7 +31,7 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-    </repositories>
+    </repositories> -->
          
     <dependencies>
         <dependency>
@@ -90,8 +90,8 @@
 
     <build>
         <!-- jar包名：业务-模块-版本号 -->
-<!--         <finalName>spring-${project.artifactId}-${project.version}</finalName > -->
-        <finalName>spring-${project.artifactId}</finalName >     
+        <!-- <finalName>spring-${project.artifactId}-${project.version}</finalName > -->
+        <finalName>spring-${project.artifactId}</finalName >
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
