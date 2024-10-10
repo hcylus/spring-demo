@@ -124,6 +124,8 @@ public class SystemUtil {
             map.put("OSTime",SystemUtil.osTime());
             map.put("OSName",SystemUtil.osName());
             map.put("HostName",SystemUtil.getHostName());
+            String imgVer = System.getenv("imgVer");
+            map.put("ImageVersion", imgVer != null ? imgVer : "Not set");            
             HashMap<String, String> ips = SystemUtil.getLocalIPs();
             map.putAll(ips);
             //System.out.println("系统首选IP：" + LocalHostUtil.getLocalIP());
