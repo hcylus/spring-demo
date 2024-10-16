@@ -12,6 +12,7 @@ WORKDIR /app
 ARG app
 ENV app=${app}
 
+RUN ln -svf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 COPY --from=builder /app/target/${app}.jar /app/${app}.jar
 EXPOSE 8080
 
